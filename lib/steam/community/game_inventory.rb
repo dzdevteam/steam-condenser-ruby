@@ -106,7 +106,7 @@ class GameInventory
   #        inventory for
   # @macro cacheable
   def initialize(app_id, steam_id64)
-    unless steam_id64.is_a? Fixnum
+    unless steam_id64.is_a? Integer
       steam_id64 = SteamId.resolve_vanity_url steam_id64.to_s
       raise SteamCondenserError.new 'User not found' if steam_id64.nil?
     end
