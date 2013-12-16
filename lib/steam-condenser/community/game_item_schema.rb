@@ -86,7 +86,7 @@ module SteamCondenser::Community
       params = { :language => language }
       data = WebApi.json!("IEconItems_#{app_id}", 'GetSchema', 1, params)
 
-      @items_game_url = data[:result][:items_game_url]
+      @items_game_url = data[:items_game_url]
 
       @attributes = {}
       data[:attributes].each do |attribute|
