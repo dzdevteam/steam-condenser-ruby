@@ -65,6 +65,11 @@ module SteamCondenser::Community
     # @return [Array<String>] This item schema's qualities
     attr_reader :qualities
 
+    # The link to items_game.txt file
+    #
+    # @return String The link to items_game.txt
+    attr_reader :items_game_url
+
     # Creates a new item schema for the game with the given application ID and
     # with descriptions in the given language
     #
@@ -80,6 +85,8 @@ module SteamCondenser::Community
     def fetch
       params = { :language => language }
       data = WebApi.json!("IEconItems_#{app_id}", 'GetSchema', 1, params)
+
+      @items_game_url = data[:result][:items_game_url]
 
       @attributes = {}
       data[:attributes].each do |attribute|
